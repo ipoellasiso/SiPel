@@ -46,7 +46,7 @@ https://templatemo.com/tm-569-edu-meeting
                   <nav class="main-nav">
                       <!-- ***** Logo Start ***** -->
                       <a href="/" class="logo">
-                          Welcome Di Sistem Informasi Pelaporan
+                          Welcome Di Sistem Informasi
                       </a>
                       <!-- ***** Logo End ***** -->
                       <!-- ***** Menu Start ***** -->
