@@ -91,5 +91,3 @@ $(document).ready(function(){
     });
 });
 </script> -->
-
-{{-- @include('Penatausahaan.Penerimaan.Halaman_Rekapan_Rek.Fungsi.Fungsi') --}}
