@@ -24,7 +24,7 @@
     </div>
     <div class="col-md-4 text-center">
         <b><h4>PEMERINTAHAN KOTA PALU</b><br>
-        <b><h4>BUKU PEMBANTU PENERIMAAN</b>
+        <b><h4>REKAPAN POTONGAN TPP</b>
         <b><h4>TAHUN ANGGARAN 2025</b>
         <!-- <b><h5>PERIODE</h6></b> -->
     </div>
@@ -38,16 +38,16 @@
         <thead class="table-danger">
             <tr>
                 <th class="text-center">No</th>
-                <th class="text-center">Nomor Rekening</th>
-                <th class="text-center">Rekening</th>
-                <th class="text-center">Nomor Bukti</th>
-                <th class="text-center">Tanggal</th>
-                <th class="text-center">Uraian</th>
-                <th class="text-center">Opd</th>
-                <th class="text-center">Bank</th>
-                <th class="text-center">Jumlah</th>
+                <th class="text-center">Nomor SP2D</th>
+                <th class="text-center">Tanggal SP2D</th>
+                <th class="text-center">Ket. SP2D</th>
+                <th class="text-center">Nilai SP2D</th>
+                <th class="text-center">Jenis Pajak</th>
+                <th class="text-center">Nilai Pajak</th>
+                <th class="text-center">Bulan</th>
+                <th class="text-center">Status</th>
                 <!-- <th class="text-center">Ket</th> -->
-                {{-- <th class="text-center" width="100px">Action</th> --}}
+                <!-- {{-- <th class="text-center" width="100px">Action</th> --}} -->
             </tr>
         </thead>
         <tbody>
@@ -56,23 +56,22 @@
             @foreach ($datarealisasi as $d )
                 <tr>
                     <td>{{ $no++ }}</td>
-                    <td>{{ $d->no_rekening }}</td>
-                    <td>{{ $d->rekening2 }}</td>
-                    <td>{{ $d->no_buku }}</td>
-                    <td>{{ $d->tgl_transaksi }}</td>
-                    <td>{{ $d->uraian }}</td>
-                    <td>{{ $d->nama_opd }}</td>
-                    <td>{{ $d->nama_bank }}</td>
-                    <td style="text-align:right">{{ number_format($d->nilai_transaksi) }}</td>
-                    <!-- <td>{{ $d->ket }}</td> -->
+                    <td>{{ $d->nomor_sp2d }}</td>
+                    <td>{{ $d->tanggal_sp2d }}</td>
+                    <td>{{ $d->keterangan_sp2d }}</td>
+                    <td>{{ number_format($d->nilai_sp2d) }}</td>
+                    <td>{{ $d->jenis_pajak }}</td>
+                    <td>{{ number_format($d->nilai_pajak) }}</td>
+                    <td>{{ $d->periode }}</td>
+                    <td>{{ $d->status1 }}</td>
                 </tr>
                 
             @endforeach
         </tbody>
         <tfoot>
             <tr>
-                <th colspan="8" style="text-align: right">Total Penerimaan</th>
-                <td style="text-align: right"><strong> {{ number_format($total = $datarealisasi->sum('nilai_transaksi'), 0) }}</td>
+                <th colspan="6" style="text-align: right">Total Pajak dan Potongan</th>
+                <td style="text-align: right"><strong> {{ number_format($total = $datarealisasi->sum('nilai_pajak'), 0) }}</td>
             </tr>
         </tfoot>
     </table>

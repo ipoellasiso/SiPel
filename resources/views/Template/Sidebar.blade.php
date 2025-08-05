@@ -94,10 +94,10 @@
                                 <a href="/tampildatarealisasibelanjaadmin">Laporan Realisasi</a>
                             </li>
                             <li class="submenu-item @if(isset($active_side_regsp2d)){{ $active_side_regsp2d }} @endif">
-                                <a href="/sp2dtpp">Data SP2D TPP</a>
+                                <a href="/sp2dtpp">Input TPP</a>
                             </li>
                             <li class="submenu-item @if(isset($active_side_rektpp)){{ $active_side_rektpp }} @endif">
-                                <a href="/tampilrekapantpp">Rekapan TPP</a>
+                                <a href="/tampilrekapantpp">Laporan Rekapan TPP</a>
                             </li>
                         @endif
                         @if(Auth::user()->role == 'User')
