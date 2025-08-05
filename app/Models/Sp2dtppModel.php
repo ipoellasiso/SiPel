@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Sp2dtppModel extends Model
 {
     use HasFactory;
-    protected $table = "Sp2dtpp";
+    protected $table = "sp2dtpp";
     protected $primaryKey = "id";
     protected $fillable = [
         'id_belanja1',
