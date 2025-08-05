@@ -38,6 +38,7 @@ class RekapantppController extends Controller
         $data = array(
             'title'                => 'Rekapan TPP',
             'active_side_rektpp'   => 'active',
+            'active_sub'           => 'active',
             'active_rektpp'        => 'active',
             'breadcumd'            => 'Penatausahaan',
             'breadcumd1'           => 'Rekapan',

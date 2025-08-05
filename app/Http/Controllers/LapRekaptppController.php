@@ -26,12 +26,13 @@ class LapRekaptppController extends Controller
         $data = array(
                 'title'                => 'Data SP2D TPP',
                 'active_side_regsp2d'  => 'active',
+                'active_sub'           => 'active',
                 'active_regsp2d'       => 'active',
                 'breadcumd'            => 'Penatausahaan',
                 'breadcumd1'           => 'Data',
                 'breadcumd2'           => 'SP2D TPP',
                 'userx'                => UserModel::where('id',$userId)->first(['fullname','role','gambar',]),
-            'opd'                  => DB::table('users')
+                'opd'                  => DB::table('users')
                                     // ->join('opd',  'opd.id', 'users.id_opd')
                                     // ->select('fullname','nama_opd')
                                     ->where('nama_opd', auth()->user()->nama_opd)
