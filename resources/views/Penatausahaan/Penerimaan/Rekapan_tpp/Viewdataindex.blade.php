@@ -38,6 +38,7 @@
         <thead class="table-danger">
             <tr>
                 <th class="text-center">No</th>
+                <th class="text-center">Nama OPD</th>
                 <th class="text-center">Nomor SP2D</th>
                 <th class="text-center">Tanggal SP2D</th>
                 <th class="text-center">Ket. SP2D</th>
@@ -46,7 +47,6 @@
                 <th class="text-center">Nilai Pajak</th>
                 <th class="text-center">Bulan</th>
                 <th class="text-center">Status</th>
-                <!-- <th class="text-center">Ket</th> -->
                 <!-- {{-- <th class="text-center" width="100px">Action</th> --}} -->
             </tr>
         </thead>
@@ -56,6 +56,7 @@
             @foreach ($datarealisasi as $d )
                 <tr>
                     <td>{{ $no++ }}</td>
+                    <td>{{ $d->nama_skpd }}</td>
                     <td>{{ $d->nomor_sp2d }}</td>
                     <td>{{ $d->tanggal_sp2d }}</td>
                     <td>{{ $d->keterangan_sp2d }}</td>
@@ -70,7 +71,7 @@
         </tbody>
         <tfoot>
             <tr>
-                <th colspan="6" style="text-align: right">Total Pajak dan Potongan</th>
+                <th colspan="7" style="text-align: right">Total Pajak dan Potongan</th>
                 <td style="text-align: right"><strong> {{ number_format($total = $datarealisasi->sum('nilai_pajak'), 0) }}</td>
             </tr>
         </tfoot>

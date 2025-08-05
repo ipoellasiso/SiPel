@@ -9,19 +9,19 @@
               <div class="modal-body">
                     <form id="userForm" name="userForm" enctype="multipart/form-data">
                         <div class="modal-body">
-                            {{-- <input type="text" name="id" id="id"> --}}
+                            {{-- <input type="text" name="idhalaman" id="idhalaman"> --}}
                             {{-- <input type="text" name="id_sp2d" id="id_sp2d"> --}}
                             <div class="row">
                                 <div class="row mb-4">
-                                    <div class="col">
+                                    <!-- <div class="col">
                                         <label>Id</label>
-                                        <input type="text" class="form-control" name="id" id="id" value="" placeholder="" readonly>
-                                    </div>
+                                        <input type="hidden" class="form-control" name="idhalaman" id="idhalaman" value="" placeholder="" readonly>
+                                    </div> -->
                                 </div>
                                 <div class="row mb-4">
                                     <div class="col">
                                         <label>Id SP2D</label>
-                                        <input type="text" class="form-control" name="id_sp2d" id="id_sp2d" value="" placeholder="" readonly>
+                                        <input type="text" class="form-control" name="idhalaman" id="idhalaman" value="" placeholder="" readonly>
                                     </div>
                                 </div>
                                 <div class="row mb-4">

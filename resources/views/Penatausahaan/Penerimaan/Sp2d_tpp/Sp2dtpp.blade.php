@@ -40,9 +40,9 @@
                                     <th>Nomor SPM</th>
                                     <th>Tanggal SP2D</th>
                                     <th>Nomor SP2D</th>
-                                    <th>No. Rekening</th>
-                                    <th>Rekening</th>
-                                    <th>Nilai Rekening</th>
+                                    <!-- <th>No. Rekening</th> -->
+                                    <!-- <th>Rekening</th> -->
+                                    <!-- <th>Nilai Rekening</th> -->
                                     <th>Unit SKPD</th>
                                     <th>Nama Penerima</th>
                                     <th>Keterangan</th>

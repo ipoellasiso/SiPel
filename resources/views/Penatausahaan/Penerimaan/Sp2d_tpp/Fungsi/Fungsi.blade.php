@@ -27,9 +27,9 @@
             {data: 'nomor_spm', name: 'nomor_spm'},
             {data: 'tanggal_sp2d', name: 'tanggal_sp2d'},
             {data: 'nomor_sp2d', name: 'nomor_sp2d'},
-            {data: 'norekening', name: 'norekening'},
-            {data: 'uraian', name: 'uraian'},
-            {data: 'nilai', name: 'nilai'},
+            // {data: 'norekening', name: 'norekening'},
+            // {data: 'uraian', name: 'uraian'},
+            // {data: 'nilai', name: 'nilai'},
             {data: 'nama_skpd', name: 'nama_skpd'},
             {data: 'nama_pihak_ketiga', name: 'nama_pihak_ketiga'},
             {data: 'keterangan_sp2d', name: 'keterangan_sp2d'},
@@ -40,22 +40,11 @@
 
     // edit data
     $('body').on('click', '.editsp2dtpp', function()  {
-        var iduser = $(this).data('id');
+        var iduser = $(this).data('idhalaman');
         $.get("/sp2dtpp/edit/"+iduser, function (data) {
             $('#saveBtn').val("edit-sp2dtpp");
             $('#tambahsp2dtpp').modal('show');
-            $('#id').val(data.id);
-            $('#id_sp2d').val(data.id_sp2d);
-            // $('#nomor_spm').val(data.nomor_spm);
-            // $('#tanggal_sp2d').val(data.tanggal_sp2d);
-            // $('#nomor_sp2d').val(data.nomor_sp2d);
-            // $('#norekening').val(data.norekening);
-            // $('#uraian').val(data.uraian);
-            // $('#nilai').val(data.nilai);
-            // $('#nama_skpd').val(data.nama_skpd);
-            // $('#keterangan_sp2d').val(data.keterangan_sp2d);
-            // $('#jenis').val(data.jenis);
-            // $('#nilai_sp2d').val(data.nilai_sp2d);
+            $('#idhalaman').val(data.idhalaman);
             $('.bd-example-modal-xl').modal('hide');
         })
     });

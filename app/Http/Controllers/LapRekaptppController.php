@@ -68,37 +68,50 @@ class LapRekaptppController extends Controller
         if ($request->ajax()) {
 
             $datapajakls = DB::table('sp2d')
-                        ->select('tanggal_sp2d', 'nomor_sp2d', 'nama_skpd', 'nama_pihak_ketiga', 'keterangan_sp2d', 'jenis', 'nilai_sp2d', 'nomor_spm', 'belanja1.norekening', 'belanja1.uraian', 'belanja1.id', 'belanja1.nilai', 'belanja1.status1')
-                        ->join('belanja1', 'belanja1.id_sp2d', 'sp2d.idhalaman')
-                        ->whereIn('belanja1.uraian', ['Tambahan Penghasilan berdasarkan Beban Kerja PNS', 'Tambahan Penghasilan berdasarkan Kondisi Kerja PNS', 'Tambahan Penghasilan berdasarkan Prestasi Kerja PNS', 'Iuran Jaminan Kesehatan 4%', 'Belanja Iuran Jaminan Kesehatan PPPK', 'Belanja Iuran Jaminan Kesehatan PNS', 'askes'])
-                        // ->where('belanja1.status1',['Belum'])
+                        ->select('tanggal_sp2d', 'nomor_sp2d', 'nama_skpd', 'nama_pihak_ketiga', 'keterangan_sp2d', 'jenis', 'nilai_sp2d', 'nomor_spm', 'idhalaman')
+                        // ->join('belanja1', 'belanja1.id_sp2d', 'sp2d.idhalaman')
+                        ->whereIn('jenis', ['LS'])
                         ->get();
+
+            // $datapajakls = DB::table('sp2d')
+            //             ->select('tanggal_sp2d', 'nomor_sp2d', 'nama_skpd', 'nama_pihak_ketiga', 'keterangan_sp2d', 'jenis', 'nilai_sp2d', 'nomor_spm', 'belanja1.norekening', 'belanja1.uraian', 'belanja1.id', 'belanja1.nilai', 'belanja1.status1')
+            //             ->join('belanja1', 'belanja1.id_sp2d', 'sp2d.idhalaman')
+            //             ->whereIn('belanja1.uraian', ['Tambahan Penghasilan berdasarkan Beban Kerja PNS', 'Tambahan Penghasilan berdasarkan Kondisi Kerja PNS', 'Tambahan Penghasilan berdasarkan Prestasi Kerja PNS', 'Iuran Jaminan Kesehatan 4%', 'Belanja Iuran Jaminan Kesehatan PPPK', 'Belanja Iuran Jaminan Kesehatan PNS', 'askes'])
+            //             // ->where('belanja1.status1',['Belum'])
+            //             ->get();
 
             return Datatables::of($datapajakls)
                     ->addIndexColumn()
-                    ->addColumn('action1', function($row){
-                        if($row->status1 == 'Input')
-                        {
+                    ->addColumn('action1', function($row) {
                         $btn1 = '
-                                   
+                                     <a href="javascript:void(0)" data-toggle="tooltip" data-idhalaman="'.$row->idhalaman.'" class="editsp2dtpp btn btn-outline-danger m-b-xs btn-sm">Input
+                                     </a>
                                 ';
-                        }else{
-                        
-                            $btn1 = '
-                                    <a href="javascript:void(0)" data-toggle="tooltip" data-id="'.$row->id.'" class="editsp2dtpp btn btn-outline-danger m-b-xs btn-sm">Input
-                                    </a>
-                                ';
-                        }
-
                         return $btn1;
                     })
+                    // ->addColumn('action1', function($row){
+                    //     if($row->status1 == 'Input')
+                    //     {
+                    //     $btn1 = '
+                                   
+                    //             ';
+                    //     }else{
+                        
+                    //         $btn1 = '
+                    //                 <a href="javascript:void(0)" data-toggle="tooltip" data-id="'.$row->id.'" class="editsp2dtpp btn btn-outline-danger m-b-xs btn-sm">Input
+                    //                 </a>
+                    //             ';
+                    //     }
+
+                    //     return $btn1;
+                    // })
                     ->addColumn('nilai_sp2d', function($row) {
                         return number_format($row->nilai_sp2d);
                     })
-                    ->addColumn('nilai', function($row) {
-                        return number_format($row->nilai);
-                    })
-                    ->rawColumns(['nilai_sp2d', 'action1', 'nilai'])
+                    // ->addColumn('nilai', function($row) {
+                    //     return number_format($row->nilai);
+                    // })
+                    ->rawColumns(['nilai_sp2d', 'action1'])
                     ->make(true);
                     
         }  
@@ -141,8 +154,8 @@ class LapRekaptppController extends Controller
     {
         $where = array('id' => $id);
         $sp2dtpp = DB::table('sp2d')
-                        ->select('tanggal_sp2d', 'nomor_sp2d', 'nama_skpd', 'nama_pihak_ketiga', 'keterangan_sp2d', 'jenis', 'nilai_sp2d', 'nomor_spm', 'belanja1.norekening', 'belanja1.uraian', 'belanja1.id', 'belanja1.nilai', 'belanja1.id_sp2d')
-                        ->join('belanja1', 'belanja1.id_sp2d', 'sp2d.idhalaman')
+                        ->select('tanggal_sp2d', 'nomor_sp2d', 'nama_skpd', 'nama_pihak_ketiga', 'keterangan_sp2d', 'jenis', 'nilai_sp2d', 'nomor_spm', 'idhalaman')
+                        // ->join('belanja1', 'belanja1.id_sp2d', 'sp2d.idhalaman')
                         ->where($where)
                         ->first();
 
