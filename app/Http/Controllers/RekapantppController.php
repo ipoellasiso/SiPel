@@ -21,8 +21,9 @@ class RekapantppController extends Controller
         $userId = Auth::guard('web')->user()->id;
         $data = array(
             'title'                => 'Rekapan TPP',
+            'active_penerimaan'    => 'active',
             'active_side_rektpp'   => 'active',
-            'active_rektpp'        => 'active',
+            'active_sub'           => 'active',
             'breadcumd'            => 'Penatausahaan',
             'breadcumd1'           => 'Rekapan',
             'breadcumd2'           => 'TPP',
@@ -37,9 +38,9 @@ class RekapantppController extends Controller
         $userId = Auth::guard('web')->user()->id;
         $data = array(
             'title'                => 'Rekapan TPP',
+            'active_penerimaan'    => 'active',
             'active_side_rektpp'   => 'active',
             'active_sub'           => 'active',
-            'active_rektpp'        => 'active',
             'breadcumd'            => 'Penatausahaan',
             'breadcumd1'           => 'Rekapan',
             'breadcumd2'           => 'TPP',

@@ -25,9 +25,9 @@ class LapRekaptppController extends Controller
         $userId = Auth::guard('web')->user()->id;
         $data = array(
                 'title'                => 'Data SP2D TPP',
+                'active_penerimaan'    => 'active',
                 'active_side_regsp2d'  => 'active',
                 'active_sub'           => 'active',
-                'active_regsp2d'       => 'active',
                 'breadcumd'            => 'Penatausahaan',
                 'breadcumd1'           => 'Data',
                 'breadcumd2'           => 'SP2D TPP',
