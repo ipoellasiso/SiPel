@@ -30,7 +30,7 @@ class RekapantppController extends Controller
             'userx'                => UserModel::where('id',$userId)->first(['fullname','role','gambar',]),
         );
 
-        return view('Penatausahaan.Penerimaan.Rekapan TPP.Tampilrekapantpp', $data);
+        return view('Penatausahaan.Penerimaan.Rekapan_tpp.Tampilrekapantpp', $data);
     }
 
     public function viewdataindex(Request $request)
@@ -59,7 +59,7 @@ class RekapantppController extends Controller
                             // ->limit(10)
                             ->get();
 
-            return view('Penatausahaan.Penerimaan.Rekapan TPP.Viewdatacari',['datarealisasi' => $datarealisasi,]);
+            return view('Penatausahaan.Penerimaan.Rekapan_tpp.Viewdatacari',['datarealisasi' => $datarealisasi,]);
         } else {
             $datarealisasi = DB::table('tb_transaksi')
                             ->select('tb_rekening.no_rekening', 'tb_rekening.rekening', 'tb_rekening.rekening2', 'tb_opd.nama_opd', 'tb_bank.nama_bank', 'tb_transaksi.uraian', 'tb_transaksi.ket', 'tb_transaksi.uraian', 'tb_transaksi.no_buku', 'tb_transaksi.tgl_transaksi', 'tb_transaksi.nilai_transaksi', 'tb_transaksi.id_transaksi', 'tb_transaksi.id_rekening', 'tb_transaksi.id_opd' )
@@ -83,7 +83,7 @@ class RekapantppController extends Controller
                             // ->where('sp2d.nama_skpd','like', "%".$request->nama_skpd."%")
                             ->first();
             
-            return view('Penatausahaan.Penerimaan.Halaman_Rekapan_Rek.Viewdataindex',[
+            return view('Penatausahaan.Penerimaan.Rekapan_tpp.Viewdataindex',[
                 'data' => $data,
                 'datarealisasi' => $datarealisasi,
                 'data1' => $data1,

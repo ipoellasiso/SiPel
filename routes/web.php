@@ -17,6 +17,7 @@ use App\Http\Controllers\Realisasi_hd_Controller;
 use App\Http\Controllers\Realisasi_HD_Controller as ControllersRealisasi_HD_Controller;
 use App\Http\Controllers\RealisasiController;
 use App\Http\Controllers\RealisasiControllerAdmin;
+use App\Http\Controllers\RekapantppController;
 use App\Http\Controllers\RekeningController;
 use App\Http\Controllers\TarikSp2dController;
 use App\Http\Controllers\UserController;
@@ -65,8 +66,8 @@ Route::get('/sp2dtpp/edit/{id}', [LapRekaptppController::class, 'editsp2dtpp'])-
 Route::post('/sp2dtpp/store', [LapRekaptppController::class, 'store'])->middleware('auth:web','checkRole:Admin');
 
 // REKAPAN REKENING 
-Route::get('/tampilrekapantpp', [LapRekaptppController::class, 'index'])->name('view.dataindex.index')->middleware('auth:web','checkRole:Admin');
-Route::get('/tampilrekapantpp/{id}/tampilawal', [LapRekaptppController::class, 'viewdataindex'])->name('view.data.tampil')->middleware('auth:web','checkRole:Admin');
-Route::get('/tampilrekapantpp/{id}/tampil', [LapRekaptppController::class, 'viewdataindex'])->name('view.data.tampil')->middleware('auth:web','checkRole:Admin');
-Route::get('/bku/opd', [LapRekaptppController::class, 'getDataopd'])->middleware('auth:web','checkRole:Admin');
+Route::get('/tampilrekapantpp', [RekapantppController::class, 'index'])->name('view.dataindex.index')->middleware('auth:web','checkRole:Admin');
+Route::get('/tampilrekapantpp/{id}/tampilawal', [RekapantppController::class, 'viewdataindex'])->name('view.data.tampil')->middleware('auth:web','checkRole:Admin');
+Route::get('/tampilrekapantpp/{id}/tampil', [RekapantppController::class, 'viewdataindex'])->name('view.data.tampil')->middleware('auth:web','checkRole:Admin');
+Route::get('/bku/opd', [RekapantppController::class, 'getDataopd'])->middleware('auth:web','checkRole:Admin');
 
