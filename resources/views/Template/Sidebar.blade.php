@@ -96,6 +96,9 @@
                             <li class="submenu-item @if(isset($active_side_regsp2d)){{ $active_side_regsp2d }} @endif">
                                 <a href="/sp2dtpp">Data SP2D TPP</a>
                             </li>
+                            <li class="submenu-item @if(isset($active_side_rektpp)){{ $active_side_rektpp }} @endif">
+                                <a href="/tampilrekapantpp">Rekapan TPP</a>
+                            </li>
                         @endif
                         @if(Auth::user()->role == 'User')
                             <li class="submenu-item @if(isset($active_sidebku)){{ $active_sidebku }} @endif">

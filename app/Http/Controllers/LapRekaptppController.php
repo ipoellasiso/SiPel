@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\BelanjalsguModel;
+use App\Models\OpdModel;
 use App\Models\Sp2dModel;
 use App\Models\Sp2dtppModel;
 use App\Models\UserModel;
@@ -23,13 +24,13 @@ class LapRekaptppController extends Controller
     {
         $userId = Auth::guard('web')->user()->id;
         $data = array(
-            'title'                => 'Data SP2D TPP',
-            'active_side_regsp2d'  => 'active',
-            'active_regsp2d'       => 'active',
-            'breadcumd'            => 'Penatausahaan',
-            'breadcumd1'           => 'Data',
-            'breadcumd2'           => 'SP2D TPP',
-            'userx'                => UserModel::where('id',$userId)->first(['fullname','role','gambar',]),
+                'title'                => 'Data SP2D TPP',
+                'active_side_regsp2d'  => 'active',
+                'active_regsp2d'       => 'active',
+                'breadcumd'            => 'Penatausahaan',
+                'breadcumd1'           => 'Data',
+                'breadcumd2'           => 'SP2D TPP',
+                'userx'                => UserModel::where('id',$userId)->first(['fullname','role','gambar',]),
             'opd'                  => DB::table('users')
                                     // ->join('opd',  'opd.id', 'users.id_opd')
                                     // ->select('fullname','nama_opd')
@@ -146,4 +147,26 @@ class LapRekaptppController extends Controller
 
         return response()->json($sp2dtpp);
     }
+
+    public function getDataopd(Request $request)
+    {
+        $search = $request->searchOpd;
+  
+        if($search == ''){
+            $opd = OpdModel::orderBy('id','asc')->select('id','nama_opd')->get();
+        }else{
+            $opd = OpdModel::orderBy('id','asc')->select('id','nama_opd')->where('nama_opd', 'like', '%' .$search . '%')->get();
+        }
+  
+        $response = array();
+        foreach($opd as $row){
+            $response[] = array(
+                "id"   => $row->id,
+                "text" => $row->nama_opd
+            );
+        }
+
+        return response()->json($response); 
+    } 
+
 }

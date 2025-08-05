@@ -64,3 +64,9 @@ Route::get('/sp2dtpp', [LapRekaptppController::class, 'index'])->middleware('aut
 Route::get('/sp2dtpp/edit/{id}', [LapRekaptppController::class, 'editsp2dtpp'])->middleware('auth:web','checkRole:Admin');
 Route::post('/sp2dtpp/store', [LapRekaptppController::class, 'store'])->middleware('auth:web','checkRole:Admin');
 
+// REKAPAN REKENING 
+Route::get('/tampilrekapantpp', [LapRekaptppController::class, 'index'])->name('view.dataindex.index')->middleware('auth:web','checkRole:Admin');
+Route::get('/tampilrekapantpp/{id}/tampilawal', [LapRekaptppController::class, 'viewdataindex'])->name('view.data.tampil')->middleware('auth:web','checkRole:Admin');
+Route::get('/tampilrekapantpp/{id}/tampil', [LapRekaptppController::class, 'viewdataindex'])->name('view.data.tampil')->middleware('auth:web','checkRole:Admin');
+Route::get('/bku/opd', [LapRekaptppController::class, 'getDataopd'])->middleware('auth:web','checkRole:Admin');
+
