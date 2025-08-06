@@ -122,22 +122,22 @@ class LapRekaptppController extends Controller
     public function store(Request $request)
     {
 
-        $sp2dtppid = $request->id;
+        $sp2dtppid = $request->idhalaman;
 
-        $cekopd = Sp2dtppModel::where('id_sp2d', $request->id_sp2d)->where('id', '!=', $request->id)->first();
+        $ceksp2dtpp = Sp2dtppModel::where('id_sp2d', $request->idhalaman)->where('id', '!=', $request->id)->first();
 
-        if($cekopd)
+        if($ceksp2dtpp)
         {
-            return response()->json(['error'=>'Ebilling sudah ada']);
+            return response()->json(['error'=>'SP2D TPP ini sudah ada']);
         }
 
-            $belanja1 = [
-                'status1' => 'Input',
-            ];
+            // $belanja1 = [
+            //     'status1' => 'Input',
+            // ];
 
             $details = [
-                'id_belanja1'   => $request->id,
-                'id_sp2d'       => $request->id_sp2d,
+                // 'id_belanja1'   => $request->id,
+                'id_sp2d'       => $request->idhalaman,
                 'periode'       => $request->periode,
                 'status1'       => $request->status1,
                 'status2'       => 'Input',
@@ -145,14 +145,14 @@ class LapRekaptppController extends Controller
         
 
             Sp2dtppModel::updateOrCreate(['id' => $sp2dtppid], $details);
-            BelanjalsguModel::updateOrCreate(['id' => $sp2dtppid], $belanja1);
+            // BelanjalsguModel::updateOrCreate(['id' => $sp2dtppid], $belanja1);
             return response()->json(['success' =>'Data Berhasil Disimpan']);
         
     }
 
     public function editsp2dtpp($id)
     {
-        $where = array('id' => $id);
+        $where = array('idhalaman' => $id);
         $sp2dtpp = DB::table('sp2d')
                         ->select('tanggal_sp2d', 'nomor_sp2d', 'nama_skpd', 'nama_pihak_ketiga', 'keterangan_sp2d', 'jenis', 'nilai_sp2d', 'nomor_spm', 'idhalaman')
                         // ->join('belanja1', 'belanja1.id_sp2d', 'sp2d.idhalaman')
