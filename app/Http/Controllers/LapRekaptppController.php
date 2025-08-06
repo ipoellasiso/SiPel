@@ -68,8 +68,8 @@ class LapRekaptppController extends Controller
         if ($request->ajax()) {
 
             $datapajakls = DB::table('sp2d')
-                        ->select('tanggal_sp2d', 'nomor_sp2d', 'nama_skpd', 'nama_pihak_ketiga', 'keterangan_sp2d', 'jenis', 'nilai_sp2d', 'nomor_spm', 'idhalaman')
-                        // ->join('belanja1', 'belanja1.id_sp2d', 'sp2d.idhalaman')
+                        ->select('tanggal_sp2d', 'nomor_sp2d', 'nama_skpd', 'nama_pihak_ketiga', 'keterangan_sp2d', 'jenis', 'nilai_sp2d', 'nomor_spm', 'idhalaman', 'sp2d.status1', 'status2')
+                        // ->join('sp2dtpp', 'sp2dtpp.id_sp2d', 'sp2d.idhalaman')
                         ->whereIn('jenis', ['LS'])
                         ->get();
 
@@ -82,36 +82,59 @@ class LapRekaptppController extends Controller
 
             return Datatables::of($datapajakls)
                     ->addIndexColumn()
-                    ->addColumn('action1', function($row) {
-                        $btn1 = '
-                                     <a href="javascript:void(0)" data-toggle="tooltip" data-idhalaman="'.$row->idhalaman.'" class="editsp2dtpp btn btn-outline-danger m-b-xs btn-sm">Input
-                                     </a>
-                                ';
-                        return $btn1;
-                    })
-                    // ->addColumn('action1', function($row){
-                    //     if($row->status1 == 'Input')
-                    //     {
+                    // ->addColumn('action1', function($row) {
                     //     $btn1 = '
-                                   
+                    //                  <a href="javascript:void(0)" data-toggle="tooltip" data-idhalaman="'.$row->idhalaman.'" class="editsp2dtpp btn btn-outline-danger m-b-xs btn-sm">Input
+                    //                  </a>
                     //             ';
-                    //     }else{
-                        
-                    //         $btn1 = '
-                    //                 <a href="javascript:void(0)" data-toggle="tooltip" data-id="'.$row->id.'" class="editsp2dtpp btn btn-outline-danger m-b-xs btn-sm">Input
-                    //                 </a>
-                    //             ';
-                    //     }
-
                     //     return $btn1;
                     // })
+                    ->addColumn('action1', function($row){
+                        if($row->status1 == 'Input')
+                        {
+                        $btn1 = '
+                                    
+                                ';
+                        }else if($row->status2 == 'Batal'){
+                        
+                            $btn1 = '
+                                    <a href="javascript:void(0)" data-toggle="tooltip" data-idhalaman="'.$row->idhalaman.'" class="updatesp2dtpp btn btn-outline-warning m-b-xs btn-sm">Ubah
+                                    </a>
+                                ';
+                        }else{
+                        
+                            $btn1 = '
+                                    <a href="javascript:void(0)" data-toggle="tooltip" data-idhalaman="'.$row->idhalaman.'" class="editsp2dtpp btn btn-outline-danger m-b-xs btn-sm">Input
+                                    </a>
+                                ';
+                        }
+
+                        return $btn1;
+                    })
+
+                    ->addColumn('action2', function($row){
+                        if($row->status2 == 'Input' | $row->status1 == 'Input')
+                        {
+                        $btn2 = '
+                                    <a href="javascript:void(0)" data-toggle="tooltip" data-idhalaman="'.$row->idhalaman.'" class="batalsp2dtpp btn btn-outline-primary m-b-xs btn-sm">Batalkan
+                                    </a>
+                                ';
+                        }else{
+                        
+                        $btn2 = '
+                               
+                            ';
+                        }
+
+                        return $btn2;
+                    })
                     ->addColumn('nilai_sp2d', function($row) {
                         return number_format($row->nilai_sp2d);
                     })
                     // ->addColumn('nilai', function($row) {
                     //     return number_format($row->nilai);
                     // })
-                    ->rawColumns(['nilai_sp2d', 'action1'])
+                    ->rawColumns(['nilai_sp2d', 'action1', 'action2'])
                     ->make(true);
                     
         }  
@@ -131,9 +154,10 @@ class LapRekaptppController extends Controller
             return response()->json(['error'=>'SP2D TPP ini sudah ada']);
         }
 
-            // $belanja1 = [
-            //     'status1' => 'Input',
-            // ];
+            $sp2d1 = [
+                'status1' => 'Input',
+                'status2' => 'Input',
+            ];
 
             $details = [
                 // 'id_belanja1'   => $request->id,
@@ -145,7 +169,7 @@ class LapRekaptppController extends Controller
         
 
             Sp2dtppModel::updateOrCreate(['id' => $sp2dtppid], $details);
-            // BelanjalsguModel::updateOrCreate(['id' => $sp2dtppid], $belanja1);
+            Sp2dModel::updateOrCreate(['idhalaman' => $sp2dtppid], $sp2d1);
             return response()->json(['success' =>'Data Berhasil Disimpan']);
         
     }
@@ -160,6 +184,54 @@ class LapRekaptppController extends Controller
                         ->first();
 
         return response()->json($sp2dtpp);
+    }
+
+    public function updatesp2dtpp($id)
+    {
+        $where = array('idhalaman' => $id);
+        $sp2dtpp2 = DB::table('sp2d')
+                        ->select('tanggal_sp2d', 'nomor_sp2d', 'nama_skpd', 'nama_pihak_ketiga', 'keterangan_sp2d', 'jenis', 'nilai_sp2d', 'nomor_spm', 'idhalaman')
+                        // ->join('belanja1', 'belanja1.id_sp2d', 'sp2d.idhalaman')
+                        ->where($where)
+                        ->first();
+
+        return response()->json($sp2dtpp2);
+    }
+
+    public function batalsp2dtpp($idhalaman25)
+    {
+        $where = array('idhalaman' => $idhalaman25);
+        $sp2dtpp356 = DB::table('sp2d')
+                        ->select('tanggal_sp2d', 'nomor_sp2d', 'nama_skpd', 'nama_pihak_ketiga', 'keterangan_sp2d', 'jenis', 'nilai_sp2d', 'nomor_spm', 'idhalaman')
+                        // ->join('belanja1', 'belanja1.id_sp2d', 'sp2d.idhalaman')
+                        ->where($where)
+                        ->first();
+
+        return response()->json($sp2dtpp356);
+    }
+
+    public function batalupdate(Request $request, string $idhalaman)
+    {
+
+        Sp2dModel::where('idhalaman',$request->get('idhalaman'))
+        ->update([
+            'status1' => 'Batal',
+            'status2' => 'Batal',
+        ]);
+
+            return redirect('tampilpajakls')->with('success','Data Berhasil Dibatalkan');
+    }
+
+    public function update(Request $request, string $idhalaman)
+    {
+
+        Sp2dModel::where('idhalaman',$request->get('idhalaman'))
+        ->update([
+            'status1' => 'Batal',
+            'status2' => 'Batal',
+        ]);
+
+            return redirect('tampilpajakls')->with('success','Data Berhasil Dibatalkan');
     }
 
     public function getDataopd(Request $request)

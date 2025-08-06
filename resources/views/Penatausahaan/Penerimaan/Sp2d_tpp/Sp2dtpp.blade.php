@@ -16,11 +16,11 @@
                         </div>
                         <div class="col-md-1">
                             <div class="btn-group dropdown me-1 mb-1">
-                                <button type="button" class="btn btn-outline-primary btn-tone m-r-5 btn-xs ml-auto dropdown-toggle" id="dropdownMenuOffset"
+                                <!-- <button type="button" class="btn btn-outline-primary btn-tone m-r-5 btn-xs ml-auto dropdown-toggle" id="dropdownMenuOffset"
                                     data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
                                     data-offset="5,20">
                                     <i class="fas fa-download"></i>
-                                </button>
+                                </button> -->
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuOffset">
                                     {{-- <a class="dropdown-item" href="javascript:void(0)" id="createBku">Tambah Data</a>
                                     <a class="dropdown-item" id="createimportbku" href="#">Upload Data</a> --}}
@@ -48,6 +48,7 @@
                                     <th>Keterangan</th>
                                     <th>Jenis SP2D</th>
                                     <th>Nilai SP2D</th>
+                                    <th></th>
                                 </tr>
                             </thead>
                         </table>
@@ -59,6 +60,8 @@
 
 @include('Penatausahaan.Penerimaan.Sp2d_tpp.Fungsi.Fungsi')
 @include('Penatausahaan.Penerimaan.Sp2d_tpp.Modal.Tambah')
+@include('Penatausahaan.Penerimaan.Sp2d_tpp.Modal.Batal')
+@include('Penatausahaan.Penerimaan.Sp2d_tpp.Modal.Update')
 
 
 @endsection

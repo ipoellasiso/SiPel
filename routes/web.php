@@ -63,7 +63,11 @@ Route::get('/datarealisasiadmin/export', [RealisasiControllerAdmin::class, 'expo
 // ======= DATA SP2D TPP =======
 Route::get('/sp2dtpp', [LapRekaptppController::class, 'index'])->middleware('auth:web','checkRole:Admin');
 Route::get('/sp2dtpp/edit/{idhalaman}', [LapRekaptppController::class, 'editsp2dtpp'])->middleware('auth:web','checkRole:Admin');
+Route::get('/sp2dtpp/update/{idhalaman}', [LapRekaptppController::class, 'updatesp2dtpp'])->middleware('auth:web','checkRole:Admin');
+Route::get('/sp2dtpp/batal/{idhalaman}', [LapRekaptppController::class, 'batalsp2dtpp'])->middleware('auth:web','checkRole:Admin');
 Route::post('/sp2dtpp/store', [LapRekaptppController::class, 'store'])->middleware('auth:web','checkRole:Admin');
+Route::post('/sp2dtpp/batalupdate/{idhalaman}', [LapRekaptppController::class, 'batalupdate'])->middleware('auth:web','checkRole:Admin');
+Route::post('/sp2dtpp/update/{idhalaman}', [LapRekaptppController::class, 'update'])->middleware('auth:web','checkRole:Admin');
 
 // REKAPAN REKENING 
 Route::get('/tampilrekapantpp', [RekapantppController::class, 'index'])->name('view.dataindex.index')->middleware('auth:web','checkRole:Admin');

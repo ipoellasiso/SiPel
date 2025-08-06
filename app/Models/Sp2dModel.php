@@ -33,6 +33,8 @@ class Sp2dModel extends Model
             'nama_ibu_kota',
             'nama_bud_kbud',
             'jabatan_bud_kbud',
-            'nip_bud_kbud'
+            'nip_bud_kbud',
+            'status1',
+            'status2'
     ];
 }
