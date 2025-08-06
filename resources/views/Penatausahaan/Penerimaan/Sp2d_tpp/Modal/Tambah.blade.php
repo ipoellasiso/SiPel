@@ -50,7 +50,7 @@
                                         <select class="form-select" id="status1" name="status1" required>
                                             <option value="">Pilih</option> 
                                             <option value="TPP">TPP</option> 
-                                            <option value="TPP">GAJI</option> 
+                                            <option value="GAJI">GAJI</option> 
                                         </select>
                                     </div>
                                 </div>

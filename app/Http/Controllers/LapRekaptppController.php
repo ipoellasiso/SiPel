@@ -219,7 +219,7 @@ class LapRekaptppController extends Controller
             'status2' => 'Batal',
         ]);
 
-            return redirect('tampilpajakls')->with('success','Data Berhasil Dibatalkan');
+            return redirect('sp2dtpp')->with('success','Data Berhasil Dibatalkan');
     }
 
     public function update(Request $request, string $idhalaman)
@@ -227,11 +227,17 @@ class LapRekaptppController extends Controller
 
         Sp2dModel::where('idhalaman',$request->get('idhalaman'))
         ->update([
-            'status1' => 'Batal',
-            'status2' => 'Batal',
+            'status1' => 'Input',
+            'status2' => 'Input',
         ]);
 
-            return redirect('tampilpajakls')->with('success','Data Berhasil Dibatalkan');
+        Sp2dtppModel::where('id_sp2d',$request->get('idhalaman'))
+        ->update([
+            'periode'       => $request->periode,
+            'status1'       => $request->status1,
+        ]);
+
+            return redirect('sp2dtpp')->with('success','Data Berhasil DiUpdate');
     }
 
     public function getDataopd(Request $request)

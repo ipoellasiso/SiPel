@@ -127,64 +127,50 @@
         });
     });
 
-    // // simpan data Update SP2D TPP
-    // $('body').on('submit', '#userForm', function(e){
-    //     e.preventDefault();
+    // simpan data Batal
+    $('body').on('submit', '#userFormUpdate', function(e){
+        e.preventDefault();
 
-    //     var actionType = $('#saveBtnUpdate').val();
-    //     $('#saveBtnUpdate').html('Tunggu..');
+        var idhalaman1 = $(this).data("idhalaman");
+        var actionType = $('#saveBtn').val();
+        $('#saveBtn').html('Sabar Ya.....');
 
-    //     var formData = new FormData(this);
+        var formData = new FormData(this);
 
-    //     $.ajax({
-    //         type:'POST',
-    //         url: "/sp2dtpp/store",
-    //         data: formData,
-    //         cacha: false,
-    //         contentType: false,
-    //         processData: false,
-    //         success: (data1) => {
-    //             if(data1.success)
-    //             {
-    //                 $('#userFormUpdate').trigger("reset");
-    //                 $('#updatesp2dtpp').modal('hide');
-    //                 $('#saveBtnUpdate').html('Simpan');
+        $.ajax({
+            type:'POST',
+            url: "/sp2dtpp/update/"+idhalaman1,
+            data: formData,
+            cacha: false,
+            contentType: false,
+            processData: false,
+            success: (data) => {
 
-    //                 Swal.fire({
-    //                     icon: "success",
-    //                     title: "success",
-    //                     text: "Data Berhasil Disimpan"
-    //                 })
+                $('#userFormUpdate').trigger("reset");
+                $('#updatesp2dtpp').modal('hide');
+                $('#saveBtn').html('Terima');
+                // $('.bd-example-modal-xl').modal('hide');
 
-    //                 table.draw();
-    //             }
-    //             else
-    //             {
-    //                 $('#userFormUpdate').trigger("reset");
-    //                 $('#updatesp2dtpp').modal('hide');
-    //                 $('#saveBtnUpdate').html('Simpan');
+                Swal.fire({
+                    icon: "success",
+                    title: "success",
+                    text: "Data Berhasil DiUpdate"
+                })
 
-    //                 Swal.fire({
-    //                     icon: "error",
-    //                     title: "Error",
-    //                     text: "Data Sp2d TPP Sudah Ada"
-    //                 })
-
-    //                 table.draw();
-    //             }
-    //         },
-    //         error: function(data1){
-    //             console.log('Error:', data1);
-    //             $('saveBtnUpdate').html('Simpan');
-    //         }
-    //     });
-    // });
+                table.draw();
+            },
+            error: function(data){
+                console.log('Error:', data);
+                $('saveBtn').html('Terima');
+            }
+        });
+    });
 
     // simpan data Batal
     $('body').on('submit', '#userFormBatal', function(e){
         e.preventDefault();
 
-        var idhalaman = $(this).data("idhalaman");
+        var idhalaman1 = $(this).data("idhalaman1");
         var actionType = $('#saveBtnBatal').val();
         $('#saveBtnBatal').html('Sabar Ya.....');
 
@@ -192,7 +178,7 @@
 
         $.ajax({
             type:'POST',
-            url: "/sp2dtpp/batalupdate/"+idhalaman,
+            url: "/sp2dtpp/batalupdate/"+idhalaman1,
             data: formData,
             cacha: false,
             contentType: false,
