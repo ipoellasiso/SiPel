@@ -127,58 +127,58 @@
         });
     });
 
-    // simpan data Update SP2D TPP
-    $('body').on('submit', '#userForm', function(e){
-        e.preventDefault();
+    // // simpan data Update SP2D TPP
+    // $('body').on('submit', '#userForm', function(e){
+    //     e.preventDefault();
 
-        var actionType = $('#saveBtnUpdate').val();
-        $('#saveBtnUpdate').html('Tunggu..');
+    //     var actionType = $('#saveBtnUpdate').val();
+    //     $('#saveBtnUpdate').html('Tunggu..');
 
-        var formData = new FormData(this);
+    //     var formData = new FormData(this);
 
-        $.ajax({
-            type:'POST',
-            url: "/sp2dtpp/store",
-            data: formData,
-            cacha: false,
-            contentType: false,
-            processData: false,
-            success: (data) => {
-                if(data.success)
-                {
-                    $('#userFormUpdate').trigger("reset");
-                    $('#updatesp2dtpp').modal('hide');
-                    $('#saveBtnUpdate').html('Simpan');
+    //     $.ajax({
+    //         type:'POST',
+    //         url: "/sp2dtpp/store",
+    //         data: formData,
+    //         cacha: false,
+    //         contentType: false,
+    //         processData: false,
+    //         success: (data1) => {
+    //             if(data1.success)
+    //             {
+    //                 $('#userFormUpdate').trigger("reset");
+    //                 $('#updatesp2dtpp').modal('hide');
+    //                 $('#saveBtnUpdate').html('Simpan');
 
-                    Swal.fire({
-                        icon: "success",
-                        title: "success",
-                        text: "Data Berhasil Disimpan"
-                    })
+    //                 Swal.fire({
+    //                     icon: "success",
+    //                     title: "success",
+    //                     text: "Data Berhasil Disimpan"
+    //                 })
 
-                    table.draw();
-                }
-                else
-                {
-                    $('#userFormUpdate').trigger("reset");
-                    $('#updatesp2dtpp').modal('hide');
-                    $('#saveBtnUpdate').html('Simpan');
+    //                 table.draw();
+    //             }
+    //             else
+    //             {
+    //                 $('#userFormUpdate').trigger("reset");
+    //                 $('#updatesp2dtpp').modal('hide');
+    //                 $('#saveBtnUpdate').html('Simpan');
 
-                    Swal.fire({
-                        icon: "error",
-                        title: "Error",
-                        text: "Data Sp2d TPP Sudah Ada"
-                    })
+    //                 Swal.fire({
+    //                     icon: "error",
+    //                     title: "Error",
+    //                     text: "Data Sp2d TPP Sudah Ada"
+    //                 })
 
-                    table.draw();
-                }
-            },
-            error: function(data){
-                console.log('Error:', data);
-                $('saveBtnUpdate').html('Simpan');
-            }
-        });
-    });
+    //                 table.draw();
+    //             }
+    //         },
+    //         error: function(data1){
+    //             console.log('Error:', data1);
+    //             $('saveBtnUpdate').html('Simpan');
+    //         }
+    //     });
+    // });
 
     // simpan data Batal
     $('body').on('submit', '#userFormBatal', function(e){
