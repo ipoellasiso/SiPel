@@ -63,14 +63,24 @@
     });
 
     // Batal data
+    // $('body').on('click', '.batalsp2dtpp', function()  {
+    //     var iduser = $(this).data('idhalaman');
+    //     $.get("/sp2dtpp/batal/"+iduser, function (data) {
+    //         $('#saveBtnBatal').val("batal-sp2dtpp");
+    //         $('#batalsp2dtpp').modal('show');
+    //         $('#idhalaman1').val(data.idhalaman);
+    //         $('#nomor_sp2d').val(data.nomor_sp2d);
+    //         $('.bd-example-modal-xl').modal('hide');
+    //     })
+    // });
+
     $('body').on('click', '.batalsp2dtpp', function()  {
-        var iduser = $(this).data('idhalaman');
-        $.get("/sp2dtpp/batal/"+iduser, function (data) {
-            $('#saveBtnBatal').val("batal-sp2dtpp");
+        var idhalaman = $(this).data('idhalaman');
+        $.get("/sp2dtpp/batal/"+idhalaman, function (data) {
+            // $('#saveBtn').val("edit-pajakls");
             $('#batalsp2dtpp').modal('show');
-            $('#idhalaman1').val(data.idhalaman);
+            $('#idhalaman12').val(data.idhalaman);
             $('#nomor_sp2d').val(data.nomor_sp2d);
-            $('.bd-example-modal-xl').modal('hide');
         })
     });
 

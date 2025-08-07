@@ -206,9 +206,17 @@ class LapRekaptppController extends Controller
     //     return response()->json($pajaklssipd);
     // }
 
-    public function batalsp2dtpp($id)
+    // public function batalsp2dtpp($idhalaman)
+    // {
+    //     $where = array('idhalaman' => $idhalaman);
+    //     $sp2dtpp356 = Sp2dModel::where($where)->first();
+
+    //     return response()->json($sp2dtpp356);
+    // }
+
+    public function batalsp2dtpp($idhalaman)
     {
-        $where = array('idhalaman' => $id);
+        $where = array('idhalaman' => $idhalaman);
         $sp2dtpp356 = DB::table('sp2d')
                         ->select('tanggal_sp2d', 'nomor_sp2d', 'nama_skpd', 'nama_pihak_ketiga', 'keterangan_sp2d', 'jenis', 'nilai_sp2d', 'nomor_spm', 'idhalaman')
                         // ->join('belanja1', 'belanja1.id_sp2d', 'sp2d.idhalaman')

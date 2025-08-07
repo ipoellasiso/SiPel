@@ -9,12 +9,13 @@
             </div>
               <div class="modal-body">
                     <form id="userFormBatal" name="userFormBatal" enctype="multipart/form-data">
+                    @csrf
                         <div class="modal-body">
                             <div class="row">
                                 <div class="row mb-4">
                                     <div class="col">
                                         <label>Id SP2D</label>
-                                        <input type="text" class="form-control" name="idhalaman" id="idhalaman1" value="" placeholder="" readonly>
+                                        <input type="text" class="form-control" name="idhalaman" id="idhalaman12" value="" placeholder="" readonly>
                                     </div>
                                 </div>
                                 <div class="row mb-4">
