@@ -127,11 +127,11 @@
         });
     });
 
-    // simpan data Batal
+    // simpan data Update
     $('body').on('submit', '#userFormUpdate', function(e){
         e.preventDefault();
 
-        var idhalaman1 = $(this).data("idhalaman");
+        var idhalaman2 = $(this).data("idhalaman2");
         var actionType = $('#saveBtn').val();
         $('#saveBtn').html('Sabar Ya.....');
 
@@ -139,7 +139,7 @@
 
         $.ajax({
             type:'POST',
-            url: "/sp2dtpp/update/"+idhalaman1,
+            url: "/sp2dtpp/update/"+idhalaman2,
             data: formData,
             cacha: false,
             contentType: false,
@@ -170,7 +170,7 @@
     $('body').on('submit', '#userFormBatal', function(e){
         e.preventDefault();
 
-        var idhalaman1 = $(this).data("idhalaman1");
+        var idhalaman = $(this).data("idhalaman");
         var actionType = $('#saveBtnBatal').val();
         $('#saveBtnBatal').html('Sabar Ya.....');
 
@@ -178,7 +178,7 @@
 
         $.ajax({
             type:'POST',
-            url: "/sp2dtpp/batalupdate/"+idhalaman1,
+            url: "/sp2dtpp/batalupdate/"+idhalaman,
             data: formData,
             cacha: false,
             contentType: false,
