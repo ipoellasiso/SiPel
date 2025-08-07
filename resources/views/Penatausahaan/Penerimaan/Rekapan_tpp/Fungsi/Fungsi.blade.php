@@ -17,25 +17,7 @@
       Render DataTable
       --------------------------------------------
       --------------------------------------------*/
-    // var table = $('.tabelrekapan').DataTable({
-    //     processing: true,
-    //     serverSide: true,
-    //     ajax: "/tampilrekapanrek",
-    //     columns: [
-    //         {data: 'DT_RowIndex', name: 'DT_RowIndex'},
-    //         {data: 'no_rekening', name: 'no_rekening'},
-    //         {data: 'rekening2', name: 'rekening2'},
-    //         {data: 'no_buku', name: 'no_buku'},
-    //         {data: 'tgl_transaksi', name: 'tgl_transaksi'},
-    //         {data: 'uraian', name: 'uraian'},
-    //         {data: 'nama_opd', name: 'nama_opd'},
-    //         {data: 'nama_bank', name: 'nama_bank'},
-    //         {data: 'nilai_transaksi', name: 'nilai_transaksi'},
-    //         {data: 'ket', name: 'ket'},
-    //         // {data: 'action', name: 'action', orderable: false, searchable: false},
-    //     ]
-    // });
-
+    
     $(document).ready(function(){
         $(document).ready(function () {
             var tampilawal = '1';
@@ -53,6 +35,7 @@
     $('body').on('click', '.reset', function () {
         $('#nama_skpd').val('').trigger('change');
         $('#periode').val('').trigger('change');
+        $('#status1').val('').trigger('change');
         $('#jenis_pajak').val('').trigger('change');
         $('#tgl_awal').val('').trigger('change');
         $('#tgl_akhir').val('').trigger('change');
@@ -71,6 +54,7 @@
         e.preventDefault();
         var nama_skpd = $("#nama_skpd").val();
         var periode = $("#periode").val();
+        var status1 = $("#status1").val();
         var jenis_pajak = $("#jenis_pajak").val();
         var tgl_awal = $("#tgl_awal").val();
         var tgl_akhir = $("#tgl_akhir").val();
@@ -78,7 +62,7 @@
         $.ajax({
             url: "{{ route('view.dataindex.index') }}" +'/' + tampilawal +'/tampil',
             type: "GET",
-            data: '&tgl_awal=' + tgl_awal + '&tgl_akhir=' + tgl_akhir + '&nama_skpd=' + nama_skpd + '&periode=' + periode + '&jenis_pajak=' + jenis_pajak, 
+            data: '&tgl_awal=' + tgl_awal + '&tgl_akhir=' + tgl_akhir + '&nama_skpd=' + nama_skpd + '&periode=' + periode + '&jenis_pajak=' + jenis_pajak + '&status1=' + status1,
                 success: function (data) {
                     $('.tampildata1').html(data);//menampilkan data ke dalam modal
                 }

@@ -55,9 +55,10 @@ class RekapantppController extends Controller
                             ->join('sp2dtpp', 'sp2dtpp.id_sp2d', '=', 'sp2d.idhalaman')
                             ->where('sp2d.nama_skpd','like', "%".$request->nama_skpd."%")
                             ->where('sp2dtpp.periode','like', "%".$request->periode."%")
+                            ->where('sp2dtpp.status1','like', "%".$request->status1."%")
                             ->where('potongan2.jenis_pajak','like', "%".$request->jenis_pajak."%")
                             ->whereBetween('sp2d.tanggal_sp2d', [$request->tgl_awal, $request->tgl_akhir])
-                            ->whereIn('potongan2.jenis_pajak', ['Iuran Jaminan Kesehatan 4%', 'PPH 21', 'Iuran Wajib Pegawai 1%', 'Iuran Jaminan Kesehatan 4%', 'Belanja Iuran Jaminan Kesehatan PPPK', 'Belanja Iuran Jaminan Kesehatan PNS', 'askes'])
+                            ->whereIn('potongan2.jenis_pajak', ['Taspen','Taperum,','PPH 21','Pajak Pertambahan Nilai,','Pajak Penghasilan Ps 4 (2)','Pajak Penghasilan Ps 23','Pajak Penghasilan Ps 22','Jaminan Hari Tua','Iuran Wajib Pegawai 8%','Iuran Wajib Pegawai 1%','Iuran Jaminan Kesehatan 4%','Iuran Jaminan Kematian','Iuran Jaminan','Kecelakaan Kerja','Belanja Tunjangan PPh/Tunjangan Khusus PNS','Belanja Iuran Jaminan Kesehatan PPPK','Belanja Iuran Jaminan Kesehatan PNS','Belanja Iuran Jaminan Kematian PPPK','Belanja Iuran Jaminan Kematian PNS','Belanja Iuran Jaminan Kecelakaan Kerja PPPK','Belanja Iuran Jaminan Kecelakaan Kerja PNS','Askes'])
                             ->get();
 
             return view('Penatausahaan.Penerimaan.Rekapan_tpp.Viewdatacari',['datarealisasi' => $datarealisasi,]);
@@ -69,9 +70,10 @@ class RekapantppController extends Controller
                             ->join('sp2dtpp', 'sp2dtpp.id_sp2d', '=', 'sp2d.idhalaman')
                             ->where('sp2d.nama_skpd','like', "%".$request->nama_skpd."%")
                             ->where('sp2dtpp.periode','like', "%".$request->periode."%")
+                            ->where('sp2dtpp.status1','like', "%".$request->status1."%")
                             ->where('potongan2.jenis_pajak','like', "%".$request->jenis_pajak."%")
                             ->whereBetween('sp2d.tanggal_sp2d', [$request->tgl_awal, $request->tgl_akhir])
-                            ->whereIn('potongan2.jenis_pajak', ['Iuran Jaminan Kesehatan 4%', 'PPH 21', 'Iuran Wajib Pegawai 1%', 'Iuran Jaminan Kesehatan 4%', 'Belanja Iuran Jaminan Kesehatan PPPK', 'Belanja Iuran Jaminan Kesehatan PNS', 'askes'])
+                            ->whereIn('potongan2.jenis_pajak', ['Taspen','Taperum,','PPH 21','Pajak Pertambahan Nilai,','Pajak Penghasilan Ps 4 (2)','Pajak Penghasilan Ps 23','Pajak Penghasilan Ps 22','Jaminan Hari Tua','Iuran Wajib Pegawai 8%','Iuran Wajib Pegawai 1%','Iuran Jaminan Kesehatan 4%','Iuran Jaminan Kematian','Iuran Jaminan','Kecelakaan Kerja','Belanja Tunjangan PPh/Tunjangan Khusus PNS','Belanja Iuran Jaminan Kesehatan PPPK','Belanja Iuran Jaminan Kesehatan PNS','Belanja Iuran Jaminan Kematian PPPK','Belanja Iuran Jaminan Kematian PNS','Belanja Iuran Jaminan Kecelakaan Kerja PPPK','Belanja Iuran Jaminan Kecelakaan Kerja PNS','Askes'])
                             ->get();
             
             $data1         = DB::table('sp2d')
@@ -81,9 +83,10 @@ class RekapantppController extends Controller
                             ->join('sp2dtpp', 'sp2dtpp.id_sp2d', '=', 'sp2d.idhalaman')
                             ->where('sp2d.nama_skpd','like', "%".$request->nama_skpd."%")
                             ->where('sp2dtpp.periode','like', "%".$request->periode."%")
+                            ->where('sp2dtpp.status1','like', "%".$request->status1."%")
                             ->where('potongan2.jenis_pajak','like', "%".$request->jenis_pajak."%")
                             ->whereBetween('sp2d.tanggal_sp2d', [$request->tgl_awal, $request->tgl_akhir])
-                            ->whereIn('potongan2.jenis_pajak', ['Iuran Jaminan Kesehatan 4%', 'PPH 21', 'Iuran Wajib Pegawai 1%', 'Belanja Iuran Jaminan Kesehatan PPPK', 'Belanja Iuran Jaminan Kesehatan PNS', 'askes'])
+                            ->whereIn('potongan2.jenis_pajak', ['Taspen','Taperum,','PPH 21','Pajak Pertambahan Nilai,','Pajak Penghasilan Ps 4 (2)','Pajak Penghasilan Ps 23','Pajak Penghasilan Ps 22','Jaminan Hari Tua','Iuran Wajib Pegawai 8%','Iuran Wajib Pegawai 1%','Iuran Jaminan Kesehatan 4%','Iuran Jaminan Kematian','Iuran Jaminan','Kecelakaan Kerja','Belanja Tunjangan PPh/Tunjangan Khusus PNS','Belanja Iuran Jaminan Kesehatan PPPK','Belanja Iuran Jaminan Kesehatan PNS','Belanja Iuran Jaminan Kematian PPPK','Belanja Iuran Jaminan Kematian PNS','Belanja Iuran Jaminan Kecelakaan Kerja PPPK','Belanja Iuran Jaminan Kecelakaan Kerja PNS','Askes'])
                             // ->where('sp2d.nama_skpd','like', "%".$request->nama_skpd."%")
                             ->first();
             
