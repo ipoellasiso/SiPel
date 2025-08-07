@@ -104,7 +104,7 @@ class LapRekaptppController extends Controller
                         }else{
                         
                             $btn1 = '
-                                    <a href="javascript:void(0)" data-toggle="tooltip" data-idhalaman="'.$row->idhalaman.'" class="editsp2dtpp btn btn-outline-danger m-b-xs btn-sm">Input
+                                    <a href="javascript:void(0)" data-toggle="tooltip" data-idhalaman="'.$row->idhalaman.'" class="editsp2dtpp btn btn-outline-success m-b-xs btn-sm">Input
                                     </a>
                                 ';
                         }
