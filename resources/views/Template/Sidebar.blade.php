@@ -81,52 +81,46 @@
                     </li>
                 @endif
 
+                @if(Auth::user()->role == 'Admin' || Auth::user()->role == 'Verifikasi')
                 <li class="sidebar-title">Penatausahaan</li>
-
                 <li class="sidebar-item  has-sub @if(isset($active_penerimaan)){{ $active_penerimaan }} @endif">
                     <a href="#" class='sidebar-link'>
                         <i class="bi bi-file-earmark-plus-fill"></i>
                         <span>Pengeluaran</span>
                     </a>
                     <ul class="submenu @if(isset($active_sub)){{ $active_sub }} @endif">
-                        @if(Auth::user()->role == 'Admin' || Auth::user()->role == 'Verifikasi')
-                            <li class="submenu-item @if(isset($active_sidebku)){{ $active_sidebku }} @endif">
-                                <a href="/tampildatarealisasibelanjaadmin">Laporan Realisasi</a>
-                            </li>
-                            <li class="submenu-item @if(isset($active_side_regsp2d)){{ $active_side_regsp2d }} @endif">
-                                <a href="/sp2dtpp">Input TPP</a>
-                            </li>
-                            <li class="submenu-item @if(isset($active_side_rektpp)){{ $active_side_rektpp }} @endif">
-                                <a href="/tampilrekapantpp">Laporan Rekapan TPP</a>
-                            </li>
-                        @endif
-                        @if(Auth::user()->role == 'User')
-                            <li class="submenu-item @if(isset($active_sidebku)){{ $active_sidebku }} @endif">
-                                <a href="/tampildatarealisasibelanja">Laporan Realisasi</a>
-                            </li>
-                        @endif
-                        {{-- @if(Auth::user()->role == 'User')
-                            <li class="submenu-item @if(isset($active_sidebukuppuser)){{ $active_sidebukuppuser }} @endif">
-                                <a href="/tampilrekapanrekuser">BUKU PEMBANTU PENERIMAAN</a>
-                            </li>
-                        @endif --}}
+                        <li class="submenu-item @if(isset($active_side_regsp2d)){{ $active_side_regsp2d }} @endif">
+                            <a href="/sp2dtpp">Input TPP</a>
+                        </li>
                     </ul>
                 </li>
-
-                {{-- <li class="sidebar-title">Laporan</li>
+                @endif
+                
+                <li class="sidebar-title">Laporan</li>
                     <li class="sidebar-item  has-sub">
                         <a href="#" class='sidebar-link'>
                             <i class="bi bi-printer-fill"></i>
-                            <span>Penerimaan</span>
+                            <span>Pengeluaran</span>
                         </a>
+                        @if(Auth::user()->role == 'Admin')
                         <ul class="submenu ">
                             <li class="submenu-item ">
-                                <a href="ui-widgets-chatbox.html">Laporan</a>
+                                <a href="/tampilrekapantpp">Laporan Potongan Gaji & Tpp</a>
+                            </li>
+                            <li class="submenu-item @if(isset($active_sidebku)){{ $active_sidebku }} @endif">
+                                <a href="/tampildatarealisasibelanjaadmin">Laporan Realisasi</a>
                             </li>
                         </ul>
+                        @endif
+                        @if(Auth::user()->role == 'User')
+                        <ul class="submenu ">
+                            <li class="submenu-item ">
+                                <a href="/tampildatarealisasibelanja">Laporan Realisasi</a>
+                            </li>
+                        </ul>
+                        @endif
                     </li>
-                
-                </li> --}}
+                </li>
 
             </ul>
         </div>
