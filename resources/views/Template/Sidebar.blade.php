@@ -110,6 +110,9 @@
                             <li class="submenu-item @if(isset($active_sidebku)){{ $active_sidebku }} @endif">
                                 <a href="/tampildatarealisasibelanjaadmin">Laporan Realisasi</a>
                             </li>
+                            <li class="submenu-item ">
+                                <a href="/tampillaprealisasi">Laporan Tes</a>
+                            </li>
                         </ul>
                         @endif
                         @if(Auth::user()->role == 'User')
