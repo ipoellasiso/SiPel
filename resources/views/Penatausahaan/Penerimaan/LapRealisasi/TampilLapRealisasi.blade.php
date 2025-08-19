@@ -3,33 +3,23 @@
 
 <div class="card">
     <div class="card-body">
-        <div class="row col-md-12">
-            <div class="col-md-4">
-                <div class="avatar-image  m-h-15 m-r-25">
-                    <img src="/app/assets/images/logo/13.png"  width="18%">
+        <div class="accordion accordion-flush" id="accordionFlushExample">
+            @foreach ($data2 as $d)
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="flush-headingOne">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                            {{$d->nomor_sp2d}}
+                        </button>
+                    </h2>
+                    <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body">{{$d->nilai_sp2d}}</div>
+                    </div>
                 </div>
-            </div>
-            <div class="col-md-4 text-center">
-                <b><h4>PEMERINTAHAN KOTA PALU</b><br>
-                <b><h4>REKAPAN POTONGAN TPP</b>
-                <b><h4>TAHUN ANGGARAN 2025</b>
-                <!-- <b><h5>PERIODE</h6></b> -->
-            </div>
-            <div class="col-md-4">
+            @endforeach
         </div>
     </div>
-
-    
-
-    </div>
 </div>
 
-<div class="card">
-    <div class="card-body tampildata1">
-        {{--Tampilan Data --}}
-    </div>
-</div>
-
-@include('Penatausahaan.Penerimaan.Rekapan_tpp.Fungsi.Fungsi')
+<!-- @include('Penatausahaan.Penerimaan.Rekapan_tpp.Fungsi.Fungsi') -->
 
 @endsection
