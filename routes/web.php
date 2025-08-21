@@ -77,7 +77,7 @@ Route::get('/tampilrekapantpp/{id}/tampil', [RekapantppController::class, 'viewd
 Route::get('/bku/opd', [RekapantppController::class, 'getDataopd'])->middleware('auth:web','checkRole:Admin');
 
 // LAPORAN REALISASI TES 
-Route::get('/tampillaprealisasi', [LaporanRealisasiController::class, 'index'])->name('view.dataindex.index')->middleware('auth:web','checkRole:Admin');
-Route::get('/tampillaprealisasi/{id}/tampilawal', [LaporanRealisasiController::class, 'viewdataindex'])->name('view.data.tampil')->middleware('auth:web','checkRole:Admin');
-Route::get('/tampillaprealisasi/{id}/tampil', [LaporanRealisasiController::class, 'viewdataindex'])->name('view.data.tampil')->middleware('auth:web','checkRole:Admin');
+// Route::get('/tampillaprealisasi', [LaporanRealisasiController::class, 'index'])->name('view.dataindex.index')->middleware('auth:web','checkRole:Admin');
+// Route::get('/tampillaprealisasi/{id}/tampilawal', [LaporanRealisasiController::class, 'viewdataindex'])->name('view.data.tampil')->middleware('auth:web','checkRole:Admin');
+// Route::get('/tampillaprealisasi/{id}/tampil', [LaporanRealisasiController::class, 'viewdataindex'])->name('view.data.tampil')->middleware('auth:web','checkRole:Admin');
 

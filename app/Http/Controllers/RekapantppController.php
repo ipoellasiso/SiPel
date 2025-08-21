@@ -30,18 +30,7 @@ class RekapantppController extends Controller
             'userx'                => UserModel::where('id',$userId)->first(['fullname','role','gambar',]),
         );
 
-        $data1 = DB::table('sp2d')
-                         ->select('sp2d.nomor_spm', 'sp2d.nomor_sp2d', 'sp2d.tanggal_sp2d', 'sp2d.keterangan_sp2d', 'sp2d.nilai_sp2d', 'sp2d.jenis', 'sp2d.nama_skpd', 'belanja1.uraian', 'belanja1.norekening', 'belanja1.nilai',)
-                         ->join('opd', 'opd.nama_opd', '=', 'sp2d.nama_skpd')
-                         ->join('sp2dtpp', 'sp2dtpp.id_sp2d', '=', 'sp2d.idhalaman')
-                         ->join('belanja1', 'belanja1.id_sp2d', '=', 'sp2d.idhalaman')
-                         ->where('sp2d.nama_skpd', auth()->user()->nama_opd)
-                         ->first();
-
-        return view('Penatausahaan.Penerimaan.Rekapan_tpp.Tampilrekapantpp',[
-                'data' => $data,
-                'data1' => $data1,
-            ]);
+        return view('Penatausahaan.Penerimaan.Rekapan_tpp.Tampilrekapantpp', $data);
     }
 
     public function viewdataindex(Request $request)

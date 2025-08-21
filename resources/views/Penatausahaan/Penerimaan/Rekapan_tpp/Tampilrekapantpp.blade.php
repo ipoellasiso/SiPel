@@ -125,7 +125,7 @@
     </div>
 </div>
 
-@include('Penatausahaan.Penerimaan.LapRealisasi.Fungsi.Fungsi')
+@include('Penatausahaan.Penerimaan.Rekapan_tpp.Fungsi.Fungsi')
 
 
 @endsection
