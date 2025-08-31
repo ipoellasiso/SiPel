@@ -29,7 +29,7 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::get('/', [Landing_pageController::class, 'index']);
-Route::get('/', [MaintenanceController::class, 'index']);
+// Route::get('/', [MaintenanceController::class, 'index']);
 
 // AUTH
 Route::get('/register', [AuthController::class, 'register']);
