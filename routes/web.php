@@ -9,6 +9,7 @@ use App\Http\Controllers\KamarController;
 use App\Http\Controllers\KamarControlleruser;
 use App\Http\Controllers\Landing_pageController;
 use App\Http\Controllers\LaporanlsController;
+use App\Http\Controllers\LaporanRealisasiController;
 use App\Http\Controllers\LapRekaptppController;
 use App\Http\Controllers\MaintenanceController;
 use App\Http\Controllers\OpdController;
@@ -28,6 +29,7 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::get('/', [Landing_pageController::class, 'index']);
+// Route::get('/', [MaintenanceController::class, 'index']);
 
 // AUTH
 Route::get('/register', [AuthController::class, 'register']);
@@ -74,4 +76,9 @@ Route::get('/tampilrekapantpp', [RekapantppController::class, 'index'])->name('v
 Route::get('/tampilrekapantpp/{id}/tampilawal', [RekapantppController::class, 'viewdataindex'])->name('view.data.tampil')->middleware('auth:web','checkRole:Admin');
 Route::get('/tampilrekapantpp/{id}/tampil', [RekapantppController::class, 'viewdataindex'])->name('view.data.tampil')->middleware('auth:web','checkRole:Admin');
 Route::get('/bku/opd', [RekapantppController::class, 'getDataopd'])->middleware('auth:web','checkRole:Admin');
+
+// LAPORAN REALISASI TES 
+// Route::get('/tampillaprealisasi', [LaporanRealisasiController::class, 'index'])->name('view.dataindex.index')->middleware('auth:web','checkRole:Admin');
+// Route::get('/tampillaprealisasi/{id}/tampilawal', [LaporanRealisasiController::class, 'viewdataindex'])->name('view.data.tampil')->middleware('auth:web','checkRole:Admin');
+// Route::get('/tampillaprealisasi/{id}/tampil', [LaporanRealisasiController::class, 'viewdataindex'])->name('view.data.tampil')->middleware('auth:web','checkRole:Admin');
 
