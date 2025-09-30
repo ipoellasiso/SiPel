@@ -69,26 +69,11 @@ class LapRekaptppController extends Controller
 
             $datapajakls = DB::table('sp2d')
                         ->select('tanggal_sp2d', 'nomor_sp2d', 'nama_skpd', 'nama_pihak_ketiga', 'keterangan_sp2d', 'jenis', 'nilai_sp2d', 'nomor_spm', 'idhalaman', 'sp2d.status1', 'status2')
-                        // ->join('sp2dtpp', 'sp2dtpp.id_sp2d', 'sp2d.idhalaman')
                         ->whereIn('jenis', ['LS'])
                         ->get();
 
-            // $datapajakls = DB::table('sp2d')
-            //             ->select('tanggal_sp2d', 'nomor_sp2d', 'nama_skpd', 'nama_pihak_ketiga', 'keterangan_sp2d', 'jenis', 'nilai_sp2d', 'nomor_spm', 'belanja1.norekening', 'belanja1.uraian', 'belanja1.id', 'belanja1.nilai', 'belanja1.status1')
-            //             ->join('belanja1', 'belanja1.id_sp2d', 'sp2d.idhalaman')
-            //             ->whereIn('belanja1.uraian', ['Tambahan Penghasilan berdasarkan Beban Kerja PNS', 'Tambahan Penghasilan berdasarkan Kondisi Kerja PNS', 'Tambahan Penghasilan berdasarkan Prestasi Kerja PNS', 'Iuran Jaminan Kesehatan 4%', 'Belanja Iuran Jaminan Kesehatan PPPK', 'Belanja Iuran Jaminan Kesehatan PNS', 'askes'])
-            //             // ->where('belanja1.status1',['Belum'])
-            //             ->get();
-
             return Datatables::of($datapajakls)
                     ->addIndexColumn()
-                    // ->addColumn('action1', function($row) {
-                    //     $btn1 = '
-                    //                  <a href="javascript:void(0)" data-toggle="tooltip" data-idhalaman="'.$row->idhalaman.'" class="editsp2dtpp btn btn-outline-danger m-b-xs btn-sm">Input
-                    //                  </a>
-                    //             ';
-                    //     return $btn1;
-                    // })
                     ->addColumn('action1', function($row){
                         if($row->status1 == 'Input')
                         {
