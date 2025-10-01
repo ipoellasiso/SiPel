@@ -20,6 +20,8 @@ use App\Http\Controllers\RealisasiController;
 use App\Http\Controllers\RealisasiControllerAdmin;
 use App\Http\Controllers\RekapantppController;
 use App\Http\Controllers\RekeningController;
+use App\Http\Controllers\ScanSp2dJsonController;
+use App\Http\Controllers\SimpanSp2dsipdController;
 use App\Http\Controllers\TarikSp2dController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -82,3 +84,9 @@ Route::get('/bku/opd', [RekapantppController::class, 'getDataopd'])->middleware(
 // Route::get('/tampillaprealisasi/{id}/tampilawal', [LaporanRealisasiController::class, 'viewdataindex'])->name('view.data.tampil')->middleware('auth:web','checkRole:Admin');
 // Route::get('/tampillaprealisasi/{id}/tampil', [LaporanRealisasiController::class, 'viewdataindex'])->name('view.data.tampil')->middleware('auth:web','checkRole:Admin');
 
+// SCAN SP2D JSON
+Route::get('/tampilrsp2dupload', [ScanSp2dJsonController::class, 'index'])->name('view.dataindex.index')->middleware('auth:web','checkRole:Admin');
+Route::post('/sp2d/upload', [ScanSp2dJsonController::class, 'upload'])->name('sp2d.upload')->middleware('auth:web','checkRole:Admin');
+
+// SCAN SP2D JSON
+Route::get('/tampilsp2dsipd', [SimpanSp2dsipdController::class, 'index'])->middleware('auth:web','checkRole:Admin');

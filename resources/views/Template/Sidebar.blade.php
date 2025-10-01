@@ -62,6 +62,12 @@
                             <li class="submenu-item @if(isset($active_sideopd)){{ $active_sideopd }} @endif">
                                 <a href="/tampilopd">Opd</a>
                             </li>
+                            <li class="submenu-item @if(isset($active_subscan)){{ $active_subscan }} @endif">
+                                <a href="tampilrsp2dupload">Scan Data SP2D</a>
+                            </li>
+                            <li class="submenu-item @if(isset($active_subsipd)){{ $active_subsipd }} @endif">
+                                <a href="tampilsp2dsipd">SP2D SIPD</a>
+                            </li>
                         </ul>
                     </li>
 

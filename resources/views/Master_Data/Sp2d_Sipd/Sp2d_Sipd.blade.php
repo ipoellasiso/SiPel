@@ -31,13 +31,27 @@
                     </tr>
                 </thead>
                 <tbody>
-                    {{-- datatable ajax --}}
+                    @forelse ($dt as $i => $row) 
+                        <tr>
+                            <td class="text-center">{{ $i+1 }}</td>
+                            <td>{{ $row['nama_sub_skpd'] ?? '-' }}</td>
+                            <td>{{ $row['nomor_sp_2_d'] ?? '-' }}</td>
+                            <td>{{ \Carbon\Carbon::parse($row['tanggal_sp_2_d'])->format('d-m-Y') }}</td>
+                            <td>{{ $row['keterangan_sp_2_d'] ?? '-' }}</td>
+                            <td>{{ rupiahh($row['nilai_sp_2_d'] ?? 0) }}</td>
+                            <td></td>
+                        </tr>
+                    @empty
+                        <tr>
+                            <td colspan="7" class="text-center">Tidak ada data ditemukan</td>
+                        </tr>
+                    @endforelse
                 </tbody>
             </table>
         </div>
     </div>
 </div>
 
-@include('Master_Data.Sp2d_Sipd.Modal.Tambah')
-@include('Master_Data.Sp2d_Sipd.Fungsi.Fungsi')
+{{-- @include('Master_Data.Sp2d_Sipd.Modal.Tambah') --}}
+{{-- @include('Master_Data.Sp2d_Sipd.Fungsi.Fungsi') --}}
 @endsection

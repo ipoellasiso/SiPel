@@ -37,4 +37,13 @@ class Sp2dModel extends Model
             'status1',
             'status2'
     ];
+
+    public function belanja() {
+        return $this->hasMany(BelanjalsguModel::class);
+    }
+
+    public function potongan() {
+        return $this->hasMany(PotonganModel::class);
+    }
+
 }
