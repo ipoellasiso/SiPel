@@ -101,6 +101,24 @@
                     </ul>
                 </li>
                 @endif
+
+                @if(Auth::user()->role == 'User')
+                <li class="sidebar-title">Penatausahaan</li>
+                    <li class="sidebar-item  has-sub @if(isset($active_penerimaan)){{ $active_penerimaan }} @endif">
+                        <a href="#" class='sidebar-link'>
+                            <i class="bi bi-file-earmark-plus-fill"></i>
+                            <span>Pengeluaran</span>
+                        </a>
+                        <ul class="submenu @if(isset($active_sub)){{ $active_sub }} @endif">
+                            <li class="submenu-item @if(isset($active_side_regsp2d)){{ $active_side_regsp2d }} @endif">
+                                <a href="/upload-pdf">Upload Data SPM</a>
+                            </li>
+                            <li class="submenu-item @if(isset($active_side_datasp2d)){{ $active_side_datasp2d }} @endif">
+                                <a href="/sp2d">Data SPM</a>
+                            </li>
+                        </ul>
+                    </li>
+                @endif
                 
                 <li class="sidebar-title">Laporan</li>
                     <li class="sidebar-item  has-sub">

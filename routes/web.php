@@ -13,6 +13,7 @@ use App\Http\Controllers\LaporanRealisasiController;
 use App\Http\Controllers\LapRekaptppController;
 use App\Http\Controllers\MaintenanceController;
 use App\Http\Controllers\OpdController;
+use App\Http\Controllers\PdfUploadController;
 use App\Http\Controllers\PeriodeController;
 use App\Http\Controllers\Realisasi_hd_Controller;
 use App\Http\Controllers\Realisasi_HD_Controller as ControllersRealisasi_HD_Controller;
@@ -22,6 +23,8 @@ use App\Http\Controllers\RekapantppController;
 use App\Http\Controllers\RekeningController;
 use App\Http\Controllers\ScanSp2dJsonController;
 use App\Http\Controllers\SimpanSp2dsipdController;
+use App\Http\Controllers\Sp2dController;
+use App\Http\Controllers\Sp2dLogController;
 use App\Http\Controllers\TarikSp2dController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -90,3 +93,12 @@ Route::post('/sp2d/upload', [ScanSp2dJsonController::class, 'upload'])->name('sp
 
 // SCAN SP2D JSON
 Route::get('/tampilsp2dsipd', [SimpanSp2dsipdController::class, 'index'])->middleware('auth:web','checkRole:Admin');
+
+// DATA SP2D
+Route::post('/sp2d/upload-pdf', [PdfUploadController::class, 'upload'])->name('sp2d.upload')->middleware(['auth:web', 'checkRole:User']);
+Route::get('/sp2d', [Sp2dController::class, 'index'])->name('sp2d.index')->middleware('auth:web','checkRole:User');
+Route::get('/sp2d/data', [Sp2dController::class, 'getData'])->name('sp2d.data')->middleware('auth:web','checkRole:User');
+Route::get('/sp2d/{id}', [Sp2dController::class, 'show'])->name('sp2d.show')->middleware('auth:web','checkRole:User');
+Route::delete('/sp2d/{id}', [Sp2dController::class, 'destroy'])->middleware('auth:web','checkRole:User');
+Route::get('/sp2d/log', [Sp2dLogController::class, 'index'])->name('sp2d.log')->middleware('auth:web','checkRole:User');
+Route::post('/rekening-belanja/update-nilai', [Sp2dController::class, 'updateNilai'])->name('rekening.updateNilai')->middleware('auth:web','checkRole:User');
