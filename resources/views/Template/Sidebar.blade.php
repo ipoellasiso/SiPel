@@ -59,6 +59,9 @@
                             <span>Master Data</span>
                         </a>
                         <ul class="submenu @if(isset($active_subopd)){{ $active_subopd }} @endif">
+                            <li class="submenu-item @if(isset($active_sideurusan)){{ $active_sideurusan }} @endif">
+                                <a href="/dataurusan">Urusan</a>
+                            </li>
                             <li class="submenu-item @if(isset($active_sideopd)){{ $active_sideopd }} @endif">
                                 <a href="/tampilopd">Opd</a>
                             </li>

@@ -26,6 +26,7 @@ use App\Http\Controllers\SimpanSp2dsipdController;
 use App\Http\Controllers\Sp2dController;
 use App\Http\Controllers\Sp2dLogController;
 use App\Http\Controllers\TarikSp2dController;
+use App\Http\Controllers\UrusanController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -102,3 +103,11 @@ Route::get('/sp2d/{id}', [Sp2dController::class, 'show'])->name('sp2d.show')->mi
 Route::delete('/sp2d/{id}', [Sp2dController::class, 'destroy'])->middleware('auth:web','checkRole:User');
 Route::get('/sp2d/log', [Sp2dLogController::class, 'index'])->name('sp2d.log')->middleware('auth:web','checkRole:User');
 Route::post('/rekening-belanja/update-nilai', [Sp2dController::class, 'updateNilai'])->name('rekening.updateNilai')->middleware('auth:web','checkRole:User');
+
+// URUSAN
+Route::get('/dataurusan', [UrusanController::class, 'index'])->name('dataurusan.index')->middleware('auth:web','checkRole:Admin');
+Route::post('/urusan/import', [UrusanController::class, 'importExcel'])->name('urusan.import')->middleware('auth:web','checkRole:Admin');
+// Export Excel dari view (ambil data dari API)
+Route::get('/urusan/export', [UrusanController::class, 'exportExcel'])
+    ->name('urusan.export')
+    ->middleware('auth:web', 'checkRole:Admin');

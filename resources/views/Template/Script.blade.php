@@ -5,9 +5,19 @@
 
     <script src="/assets/extensions/apexcharts/apexcharts.min.js"></script>
     <script src="/assets/static/js/pages/dashboard.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
 
     {{-- <script src="https://cdn.jsdelivr.net/npm/numbro@2.3.1/dist/numbro.min.js"></script> --}}
 
+    <script>
+        // aktifkan semua tooltip bootstrap di seluruh halaman
+        document.addEventListener('DOMContentLoaded', function() {
+            var tooltipTriggerList = [].slice.call(document.querySelectorAll('[title]'));
+            tooltipTriggerList.map(function (tooltipTriggerEl) {
+                return new bootstrap.Tooltip(tooltipTriggerEl);
+            });
+        });
+    </script>
 
     <div class="container my-3">
         @if (@session('success'))
