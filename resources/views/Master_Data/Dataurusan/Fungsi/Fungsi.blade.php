@@ -17,6 +17,33 @@
       Render DataTable
       --------------------------------------------
       --------------------------------------------*/
+    $(document).ready(function() {
+        // 🔹 URL API kamu
+        const apiUrl = "http://127.0.0.1:8000/api/urusan";
+
+        // 🔹 Cek dulu apakah API hidup
+        $.ajax({
+            url: apiUrl,
+            type: "GET",
+            timeout: 3000, // 3 detik maksimal tunggu
+            success: function(response) {
+                // Kalau sukses, baru hidupkan DataTable
+                initDataTable();
+            },
+            error: function(xhr, status, error) {
+                // Kalau gagal (server mati / koneksi error)
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Server API Tidak Aktif!',
+                    text: 'Silakan jalankan server API Laravel.',
+                    confirmButtonText: 'OK',
+                    confirmButtonColor: '#d33',
+                    footer: '<a href="http://127.0.0.1:8000/api/urusan" target="_blank">Coba buka API secara manual</a>'
+                });
+            }
+        });
+    });
+
     // === DataTables ===
     var table = $('#tabelurusan').DataTable({
         processing: true,
